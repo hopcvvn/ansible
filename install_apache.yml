@@ -1,0 +1,14 @@
+---
+- name: Install packages based on OS
+  hosts: all
+  become: true
+  gather_facts: yes
+
+  tasks:
+    - name: Install Apache on CentOS
+      yum:
+        name: httpd
+        state: latest
+     # when: ansible_distribution == 'CentOS'
+
+

@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  gather_facts: yes
+  tasks:
+    - name: check connection
+      ansible.builtin.ping:
+     #when: ansible_distribution == 'CentOS'
+    
+    - name: Display a friendly greeting
+      ansible.builtin.debug:
+        msg: "Hello, Ansible!"

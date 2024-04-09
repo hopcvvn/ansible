@@ -1,0 +1,16 @@
+---
+- name: Install packages based on OS
+  hosts: all                                     #### can speciy IP host/host name at line
+  become: true
+  gather_facts: yes                              #### directive ensures that Ansible collects facts about the target system (including distribution information).
+
+  tasks:
+    - name: Install Apache on CentOS             #### task's name
+      yum:                                       #### module's name
+        name: httpd                              #### package name 
+        state: latest                            #### this state to install package
+        #state: absent                           #### this state to remove package
+      when: ansible_distribution == 'CentOS'     #### this condition command 
+
+
+
