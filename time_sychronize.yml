@@ -1,0 +1,24 @@
+---
+- name: Synchronize Time with NTP
+  hosts: all  # Replace with the actual hostname or group of hosts
+  become: true
+
+  tasks:
+    - name: Install NTP package
+      package:
+        name: ntp
+        state: present
+
+    - name: Start NTP service
+      service:
+        name: ntpd
+        state: restarted
+        enabled: yes
+
+    - name: Set timezone (optional)
+      timezone:
+        name: "Asia/Ho_Chi_Minh"  # Replace with your desired timezone (e.g., "Europe/Paris")
+
+    - name: Enable NTP synchronization
+      command:
+        cmd: timedatectl set-ntp true
